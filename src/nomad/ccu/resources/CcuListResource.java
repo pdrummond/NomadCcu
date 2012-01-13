@@ -9,13 +9,10 @@ import javax.ws.rs.core.MediaType;
 
 import nomad.ccu.beans.Ccu;
 import nomad.ccu.data.DataServiceInterface;
-import nomad.ccu.data.SimpleTestDataService;
 
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 @Path("/ccuList")
-@Component
 @Scope("request")
 public class CcuListResource {
 	
@@ -24,9 +21,14 @@ public class CcuListResource {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<Ccu> getCcuList() {
-		if(dataService == null) {
-			dataService = new SimpleTestDataService();
-		}
 		return dataService.getCcuList();
+	}
+
+	public DataServiceInterface getDataService() {
+		return dataService;
+	}
+
+	public void setDataService(DataServiceInterface dataService) {
+		this.dataService = dataService;
 	}
 }
