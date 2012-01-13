@@ -11,7 +11,12 @@ import nomad.ccu.beans.Ccu;
 import nomad.ccu.data.DataServiceInterface;
 import nomad.ccu.data.SimpleTestDataService;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 @Path("/ccuList")
+@Component
+@Scope("request")
 public class CcuListResource {
 	
 	private DataServiceInterface dataService; 
